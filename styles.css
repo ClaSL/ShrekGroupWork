@@ -1,9 +1,10 @@
 /*BACKGROUND PICTURE*/
 
 #forest {
-    background-image: ;
-    width: 100%;
-    height: 60vh;
+    background-image:url("img/forest.jpg"
+    ) ;
+    width: 800px;
+   height: 450px;
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
@@ -25,21 +26,22 @@
     height: 300px;
     position: absolute;
     bottom: 0;
+    transform: translate(-200px);
 }
 
 
 /*1 SHREK COMES IN */
 
 .shrekMove {
-    animation: moveingto 2s;
+    animation: moveingto 2s forwards;
 }
 
 @keyframes moveingto {
     0% {
-        transform: translate(-200px);
+        transform: translate(-100px);
     }
     100% {
-        transform: translate(80%);
+        transform: translate(400px);
     }
 }
 
@@ -47,29 +49,30 @@
 /*2a DONKEY PEEKS IN/OUT*/
 
 .donkeyPeek {
-    animation: peek 2s;
+    animation: peek 2s alternate;
 }
 
 @keyframes peek {
-    0% {
-        transform: translate(-5%);
-    }
-    35% {
-        transform: translate(5%) rotate(5%);
-    }
+
+
     50% {
-        transform: translate(10%) rotate(10%);
-    }
-    100% {
-        transform: translate(-5%);
+        transform: translate(10%) rotate(10deg);
     }
 }
 
 
 /*2b SHREK MIRRORS*/
 
+
+
 .shrekMirror {
-    transform: scale(-1, 1);
+    /*transform: scale(-1, 1);*/
+    animation: mirror 2s;
+}
+@keyframes mirror{
+
+    50%{transform:
+        scale(-1, 1);}
 }
 
 
@@ -77,6 +80,8 @@
 
 
 /*FRIENDSa Shrek and Donkey jump*/
+
+/*
 
 .friendJump {
     animation: friendjump .3s ease-out;
@@ -94,10 +99,10 @@
         bottom: -30px;
     }
 }
-
+*/
 
 /*FRIENDS b  Shrek and Donkey leave to the right*/
-
+/*
 .friendsLeave {
     animation: friendsLeave 2s forwards;
 }
@@ -107,10 +112,10 @@
         transform: translate(800px);
     }
 }
-
+*/
 
 /*FOES: Shrek kicks Donkey , Donkey rolles away*/
-
+/*
 .shrekKick {
     animation: kick 0.3s;
 }
@@ -130,3 +135,4 @@
         transform: translate(-200px) rotate(600deg);
     }
 }
+*/
