@@ -5,7 +5,7 @@ let donkeyHero = document.querySelector("#donkey");
 
 /*THE SOUND*/
 
-let startMusic = document.querySelector("#startSong");
+//let startMusic = document.querySelector("#startSong");
 
 let horseSound = document.querySelector("#horse");
 
@@ -15,20 +15,29 @@ let startBtn = document.querySelector("#firstButton");
 let peekBtn = document.querySelector("#peekButton");
 let scene3Button = document.querySelector("#scene3Button");
 
-startMusic.play ();
+//startMusic.play ();
 startBtn.addEventListener("click", startScene1);
 
-function startScene1 (){
-    shrekHero.classList.add("shrekMove");
+function startScene1() {
+
+
+
+    shrekHero.classList.add("shrekMove"
+        , "shrekrotate");
 
     startBtn.classList.add("hidden");
-
-    peekBtn.classList.remove("hidden");
     console.log("It works!");
-    shrekHero.addEventListener("animationend", function(){
+    shrekHero.addEventListener("animationend", function () {
         shrekHero.classList.remove("shrekMove");
-        shrekHero.style.left="400px";
+        shrekHero.style.left = "400px";
     });
+
+     setTimeout(function () {
+        console.log("wait for it...");
+
+        peekBtn.classList.remove("hidden");
+
+    }, 3000);
 
 }
 
@@ -48,17 +57,25 @@ function resetScene2() {
 peekBtn.addEventListener("click", startScene2);
 
 function startScene2() {
+
+    setTimeout(function () {
+        console.log("make rabbit jump into hole");
+
+        scene3Button.classList.remove("hidden");
+
+    }, 3000);
+
     console.log("Donkey is peaking!");
     horseSound.play();
     donkeyHero.classList.add("donkeyPeek");
-    scene3Button.classList.remove("hidden");
-
     horseSound.addEventListener("ended", function () {
         console.log("What was that?");
         shrekHero.classList.add("shrekMirror");
 
     });
 }
+
+
 
 shrekHero.addEventListener("animationend", resetScene2);
 
@@ -72,12 +89,12 @@ function resetScene2() {
 }
 
 scene3Button.addEventListener("click", startScene3);
-function startScene3 (){
+
+function startScene3() {
     console.log("Donkey is coming!");
     peekBtn.classList.add("hidden");
     scene3Button.classList.add("hidden");
     donkeyHero.classList.add("donkeySings");
-        shrekHero.style.left="400px";
-        shrekHero.classList.add("shrekTurns");
+    shrekHero.style.left = "400px";
+    shrekHero.classList.add("shrekTurns");
 }
-
