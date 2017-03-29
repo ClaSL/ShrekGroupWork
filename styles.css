@@ -10,7 +10,7 @@
 }
 
 
-/*SHREK IMAGE*/
+/* SHREK */
 
 #shrek {
     height: 300px;
@@ -20,7 +20,7 @@
 }
 
 
-/*DONKEY IMAGE*/
+/* DONKEY */
 
 #donkey {
     height: 300px;
@@ -29,45 +29,58 @@
     transform: translate(-200px);
 }
 
-#firstButton {
-    position: absolute;
-    top: 50px;
-    left: 300px;
-}
+
+/* BUTTONS */
 
 .hidden {
     display: none;
 }
 
-#peekButton {
+#StartBtn {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+}
+
+#peekBtn {
     position: absolute;
     top: 50px;
     left: 400px;
 }
 
-#scene3Button {
+#donkeyEntersBtn {
+    position: absolute;
+    top: 50px;
+    left: 500px;
+}
+
+#enemiesBtn {
+    position: absolute;
+    top: 50px;
+    left: 400px;
+}
+
+#friendsBtn {
     position: absolute;
     top: 50px;
     left: 500px;
 }
 
 
-/*1 SHREK COMES IN */
+/* SHREK COMES IN */
 
 .shrekrotate {
-    animation: srotate 2s forwards;
+    animation: srotate 0.7s forwards;
 }
 
 @keyframes srotate {
     20%,
-    40%,
     60%,
     80% {
         transform: rotate(-5deg);
     }
-    30%,
-    50%,
-    70%,
+    40%,
+    80%,
     90% {
         transform: rotate(5deg);
     }
@@ -84,7 +97,7 @@
 }
 
 
-/*2a DONKEY PEEKS IN/OUT*/
+/*2A DONKEY PEEKS IN/OUT*/
 
 .donkeyPeek {
     animation: peek 2s alternate;
@@ -92,12 +105,12 @@
 
 @keyframes peek {
     50% {
-        transform: translate(10%) rotate(10deg);
+        transform: translate(5%) rotate(35deg);
     }
 }
 
 
-/*2b SHREK MIRRORS*/
+/*2B SHREK MIRRORS*/
 
 .shrekMirror {
     animation: mirror 1s forwards;
@@ -107,13 +120,13 @@
     50% {
         transform: scale(-1, 1);
     }
+}
 
-100% {
-    transform: translate(400px);
-}
-}
-.donkeySings {
-    animation: moveSingsMove 5s forwards;
+
+/* MEET THE DONKEY*/
+
+.donkeyEnters {
+    animation: moveSingsMove 2.8s forwards;
 }
 
 @keyframes moveSingsMove {

@@ -1,31 +1,37 @@
-/*THE HEROES*/
-let shrekHero = document.querySelector("#shrek");
+/* HEROES */
 
+let shrekHero = document.querySelector("#shrek");
 let donkeyHero = document.querySelector("#donkey");
 
-/*THE SOUND*/
+/* SOUND */
 
 let startMusic = document.querySelector("#startSong");
-
 let horseSound = document.querySelector("#horse");
 
-/*BUTTONS*/
+/* BUTTONS */
 
-let startBtn = document.querySelector("#firstButton");
-let peekBtn = document.querySelector("#peekButton");
-let scene3Button = document.querySelector("#scene3Button");
-let friendsButton = document.querySelector("#friends");
-let enemiesButton = document.querySelector("#enemies");
+let startBtn = document.querySelector("#StartBtn");
+let peekBtn = document.querySelector("#peekBtn");
+let scene3Button = document.querySelector("#donkeyEntersBtn");
+let friendsButton = document.querySelector("#enemiesBtn");
+let enemiesButton = document.querySelector("#friendsBtn");
 
-startMusic.play ();
+
+
+/*START ADVENTURE*/
+
+startMusic.play();
 startBtn.addEventListener("click", startScene1);
 
+
+/*Shrek enters*/
+
 function startScene1() {
-    shrekHero.classList.add("shrekMove"
-        , "shrekrotate");
+    shrekHero.classList.add("shrekMove", "shrekrotate");
 
     startBtn.classList.add("hidden");
-    console.log("It works!");
+    console.log("StartButton is gone!");
+
     shrekHero.addEventListener("animationend", function () {
         shrekHero.classList.remove("shrekMove");
         shrekHero.style.left = "400px";
@@ -41,25 +47,14 @@ function startScene1() {
 }
 
 
-function resetScene2() {
-    //rest stuff
-    console.log("reset scene 2");
-
-    donkeyHero.classList.remove("donkeyPeek");
-
-    shrekHero.classList.remove("shrekMirror");
-
-
-}
-/*Second Button: Donkey PEAKs in*/
+/*Second Button: Meet the donkey! */
 
 peekBtn.addEventListener("click", startScene2);
 
 function startScene2() {
 
     setTimeout(function () {
-        console.log("make rabbit jump into hole");
-
+        console.log("Wait for the button..");
         scene3Button.classList.remove("hidden");
 
     }, 3000);
@@ -87,15 +82,31 @@ function resetScene2() {
     shrekHero.classList.remove("shrekMirror");
 }
 
+
 scene3Button.addEventListener("click", startScene3);
 
 function startScene3() {
     console.log("Donkey is coming!");
     peekBtn.classList.add("hidden");
     scene3Button.classList.add("hidden");
-    donkeyHero.classList.add("donkeySings");
+    donkeyHero.classList.add("donkeyEnters");
     shrekHero.style.left = "400px";
-    shrekHero.classList.add("shrekTurns");
-    friendsButton.classList.remove("hidden");
-    enemiesButton.classList.remove("hidden");
+
+    donkeyHero.addEventListener("animationend", turnShrek);
+
+    function turnShrek() {
+        shrekHero.classList.add("shrekTurns");
+    }
+
+    shrekHero.addEventListener("animationend", showButtons);
+
+    function showButtons() {
+
+        setTimeout(function () {
+            friendsButton.classList.remove("hidden");
+            enemiesButton.classList.remove("hidden");
+        }, 1500);
+
+
+    }
 }
