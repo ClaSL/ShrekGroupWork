@@ -5,7 +5,7 @@ let donkeyHero = document.querySelector("#donkey");
 
 /*THE SOUND*/
 
-//let startMusic = document.querySelector("#startSong");
+let startMusic = document.querySelector("#startSong");
 
 let horseSound = document.querySelector("#horse");
 
@@ -14,14 +14,13 @@ let horseSound = document.querySelector("#horse");
 let startBtn = document.querySelector("#firstButton");
 let peekBtn = document.querySelector("#peekButton");
 let scene3Button = document.querySelector("#scene3Button");
+let friendsButton = document.querySelector("#friends");
+let enemiesButton = document.querySelector("#enemies");
 
-//startMusic.play ();
+startMusic.play ();
 startBtn.addEventListener("click", startScene1);
 
 function startScene1() {
-
-
-
     shrekHero.classList.add("shrekMove"
         , "shrekrotate");
 
@@ -32,7 +31,7 @@ function startScene1() {
         shrekHero.style.left = "400px";
     });
 
-     setTimeout(function () {
+    setTimeout(function () {
         console.log("wait for it...");
 
         peekBtn.classList.remove("hidden");
@@ -97,4 +96,6 @@ function startScene3() {
     donkeyHero.classList.add("donkeySings");
     shrekHero.style.left = "400px";
     shrekHero.classList.add("shrekTurns");
+    friendsButton.classList.remove("hidden");
+    enemiesButton.classList.remove("hidden");
 }
