@@ -7,6 +7,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
+    overflow: hidden;
 }
 
 
@@ -29,7 +30,67 @@
     transform: translate(-200px);
 }
 
+/*APPLES*/
 
+#apple1, #apple2, #apple3
+ {
+     height: 50px;
+     width: 50px;
+     position: absolute;
+     top: 250px;
+}
+
+#apple1 {
+    left: 30px;
+}
+
+#apple2{
+    left: 100px;
+}
+
+#apple3{
+    left: 170px;
+}
+.applescale{
+    animation: applescale 1s infinite;
+}
+@keyframes applescale{
+    0%,100%{
+        height: 50px;
+        width: 50px;
+    }
+    50%{
+        height: 70px;
+        width: 70px;
+    }
+}
+
+.appleshake{
+    animation: appleshake 1.5s infinite;
+}
+@keyframes appleshake{
+    0%,100%{
+        transform: rotate(0deg);
+        height: 50px;
+        width: 50px;
+    }
+    25%{
+        transform: rotate(10deg);
+        height: 70px;
+        width: 70px;
+    }
+    50%{
+        transform: rotate(0deg);
+        height: 50px;
+        width: 50px;
+    }
+    75%{
+        transform: rotate(-10deg);
+        height: 70px;
+        width: 70px;
+    }
+
+}
 /* BUTTONS */
 
 .hidden {
@@ -149,8 +210,18 @@
 }
 
 
-/*3 DONKEY JUMPS IN*/
+/*apple disappear*/
 
+.appleDisappear{
+    animation: appleGone 1s forwards;
+}
+
+@keyframes appleGone {
+
+    to{
+        opacity: 0;
+    }
+}
 
 /*FRIENDSa Shrek and Donkey jump*/
 
@@ -195,22 +266,31 @@
 
 
 .shrekKick {
-    animation: kick 0.3s;
+    animation: kick .3s;
 }
 
 @keyframes kick {
     50% {
-        transform: rotate(-15deg);
+        transform: rotate(-15deg) scale(-1,1);
     }
 }
 
 .donkeyRoll {
-    animation: roll 1s;
+    animation: roll 2s forwards;
 }
 
 @keyframes roll {
     100% {
-        transform: translate(-200px) rotate(600deg);
+        transform: translate(-800px) rotate(600deg);
+    }
+}
+
+.shrekgoaway{
+    animation: goaway 2s forwards;
+}
+@keyframes goaway{
+    to{
+        transform: translate(800px);
     }
 }
 

@@ -16,7 +16,10 @@ let scene3Button = document.querySelector("#donkeyEntersBtn");
 let friendsButton = document.querySelector("#friendsBtn");
 let enemiesButton = document.querySelector("#enemiesBtn");
 
-
+let apples = document.querySelectorAll(".apple");
+let apple1 = document.querySelector("#apple1");
+let apple2 = document.querySelector("#apple2");
+let apple3 = document.querySelector("#apple3");
 
 /*START ADVENTURE*/
 
@@ -34,7 +37,7 @@ function startScene1() {
 
     shrekHero.addEventListener("animationend", removeMoveClass);
 
-    function removeMoveClass () {
+    function removeMoveClass() {
         shrekHero.classList.remove("shrekMove");
         shrekHero.style.left = "400px";
         peekBtn.classList.remove("hidden");
@@ -62,16 +65,17 @@ function startScene2() {
         console.log("What was that?");
         shrekHero.classList.add("shrekMirror");
         shrekHero.addEventListener("animationend", resetScene2);
+
+        function resetScene2() {
+            console.log("reset scene 2");
+            donkeyHero.classList.remove("donkeyPeek");
+            shrekHero.classList.remove("shrekMirror");
+            shrekHero.removeEventListener("animationend", resetScene2);
+        }
     });
 }
 
-function resetScene2() {
-    //rest stuff
-    console.log("reset scene 2");
-    donkeyHero.classList.remove("donkeyPeek");
-    shrekHero.classList.remove("shrekMirror");
-    shrekHero.removeEventListener("animationend", resetScene2);
-}
+
 
 //Meet Donkey
 
@@ -89,6 +93,7 @@ function startScene3() {
 
     function turnShrek() {
         shrekHero.classList.add("shrekTurns");
+        donkeyHero.removeEventListener("animationend", turnShrek);
     }
 
     shrekHero.addEventListener("animationend", showButtons);
@@ -107,52 +112,85 @@ function startScene3() {
 //We are enemies!
 enemiesButton.addEventListener("click", enemies);
 
-function enemies (){
+function enemies() {
+    shrekHero.classList.remove("shrekrotate");
+    shrekHero.classList.remove("shrekTurns");
     donkeyHero.classList.remove("donkeyEnters");
     donkeyHero.style.left = "500px";
-    console.log("Are you friends?");
+    console.log("Get out Donkey!");
+
     shrekHero.classList.add("shrekKick");
     donkeyHero.classList.add("donkeyRoll");
+    shrekHero.addEventListener("animationend", goaway);
+    function goaway(){
+        shrekHero.classList.add("shrekgoaway");
+        shrekHero.removeEventListener("animationend", goaway);
+        enemiesButton.style.display="none"
+    };
+
+
+
 }
-//    donkeyHero.addEventListener("animationend", friendsLeave);
-//
-//    function friendsLeave (){
-//        console.log("Leave!!!");
-//        donkeyHero.classList.remove("friendJump");
-//        shrekHero.classList.remove("friendJump");
-//        donkeyHero.classList.add("friendsLeave");
-//        shrekHero.classList.add("friendsLeave");
-//    }
-//}
+
+
 //Get Friends
 friendsButton.addEventListener("click", getFriends);
 
-function getFriends (){
-    donkeyHero.classList.remove("donkeyEnters");
-    donkeyHero.style.left = "500px";
-    console.log("Are you friends?");
-    shrekHero.classList.add("friendJump");
-    donkeyHero.classList.add("friendJump");
 
-    donkeyHero.addEventListener("animationend", friendsLeave);
 
-    function friendsLeave (){
-        console.log("Leave!!!");
-        donkeyHero.classList.remove("friendJump");
-        shrekHero.classList.remove("friendJump");
-        donkeyHero.classList.add("friendsLeave");
-        shrekHero.classList.add("friendsLeave");
-    }
+
+function getFriends() {
+    shrekHero.classList.remove("shrekKick");
+    shrekHero.classList.remove("shrekgoaway");
+    shrekHero.classList.remove("friendJump");
+    donkeyHero.classList.remove('donkeyRoll');
+    donkeyHero.classList.remove('friendJump');
+
+    apple1.classList.remove("hidden");
+    apple2.classList.remove("hidden");
+    apple3.classList.remove("hidden");
+    apple1.classList.add("applescale");
+    apple2.classList.add("applescale");
+    apple3.classList.add("applescale");
+
+    apples.forEach(appleEListener);
+    function appleEListener (item){
+        item.addEventListener("click", appleClicked);
+    };
+
+    let clickNumber = 0;
+    function appleClicked (){
+        this.classList.add("appleDisappear");
+        clickNumber++;
+        if (clickNumber==3){
+            donkeyHero.classList.remove("donkeyEnters");
+            donkeyHero.style.left = "500px";
+            console.log("Are you friends?");
+            shrekHero.classList.add("friendJump");
+            donkeyHero.classList.add("friendJump");
+
+            donkeyHero.addEventListener("animationend", friendsLeave);
+
+            function friendsLeave() {
+                console.log("Leave!!!");
+                donkeyHero.classList.remove("friendJump");
+                shrekHero.classList.remove("friendJump");
+                donkeyHero.classList.add("friendsLeave");
+                shrekHero.classList.add("friendsLeave");
+                donkeyHero.removeEventListener("animationend", friendsLeave);
+            }
+        } else{
+            apple1.classList.add("appleshake");
+            apple2.classList.add("appleshake");
+            apple3.classList.add("appleshake");
+        }
+
+    };
+
+
+    friendsButton.style.display="none";
+
+
 }
 
 //getFriends.addEventListener("animationend")
-
-
-
-
-
-
-
-
-
-
