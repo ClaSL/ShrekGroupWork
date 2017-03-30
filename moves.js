@@ -13,8 +13,8 @@ let horseSound = document.querySelector("#horse");
 let startBtn = document.querySelector("#StartBtn");
 let peekBtn = document.querySelector("#peekBtn");
 let scene3Button = document.querySelector("#donkeyEntersBtn");
-let friendsButton = document.querySelector("#enemiesBtn");
-let enemiesButton = document.querySelector("#friendsBtn");
+let friendsButton = document.querySelector("#friendsBtn");
+let enemiesButton = document.querySelector("#enemiesBtn");
 
 
 
@@ -32,22 +32,18 @@ function startScene1() {
     startBtn.classList.add("hidden");
     console.log("StartButton is gone!");
 
-    shrekHero.addEventListener("animationend", function () {
+    shrekHero.addEventListener("animationend", removeMoveClass);
+
+    function removeMoveClass () {
         shrekHero.classList.remove("shrekMove");
         shrekHero.style.left = "400px";
-    });
-
-    setTimeout(function () {
-        console.log("wait for it...");
-
         peekBtn.classList.remove("hidden");
-
-    }, 3000);
-
+        shrekHero.removeEventListener("animationend", removeMoveClass);
+    };
 }
 
 
-/*Second Button: Meet the donkey! */
+/*Second Button: Donkey peeks! */
 
 peekBtn.addEventListener("click", startScene2);
 
@@ -65,22 +61,19 @@ function startScene2() {
     horseSound.addEventListener("ended", function () {
         console.log("What was that?");
         shrekHero.classList.add("shrekMirror");
-
+        shrekHero.addEventListener("animationend", resetScene2);
     });
 }
-
-
-
-shrekHero.addEventListener("animationend", resetScene2);
 
 function resetScene2() {
     //rest stuff
     console.log("reset scene 2");
-
     donkeyHero.classList.remove("donkeyPeek");
-
     shrekHero.classList.remove("shrekMirror");
+    shrekHero.removeEventListener("animationend", resetScene2);
 }
+
+//Meet Donkey
 
 
 scene3Button.addEventListener("click", startScene3);
@@ -105,8 +98,61 @@ function startScene3() {
         setTimeout(function () {
             friendsButton.classList.remove("hidden");
             enemiesButton.classList.remove("hidden");
-        }, 1500);
+        }, 200);
 
 
     }
 }
+
+//We are enemies!
+enemiesButton.addEventListener("click", enemies);
+
+function enemies (){
+    donkeyHero.classList.remove("donkeyEnters");
+    donkeyHero.style.left = "500px";
+    console.log("Are you friends?");
+    shrekHero.classList.add("shrekKick");
+    donkeyHero.classList.add("donkeyRoll");
+}
+//    donkeyHero.addEventListener("animationend", friendsLeave);
+//
+//    function friendsLeave (){
+//        console.log("Leave!!!");
+//        donkeyHero.classList.remove("friendJump");
+//        shrekHero.classList.remove("friendJump");
+//        donkeyHero.classList.add("friendsLeave");
+//        shrekHero.classList.add("friendsLeave");
+//    }
+//}
+//Get Friends
+friendsButton.addEventListener("click", getFriends);
+
+function getFriends (){
+    donkeyHero.classList.remove("donkeyEnters");
+    donkeyHero.style.left = "500px";
+    console.log("Are you friends?");
+    shrekHero.classList.add("friendJump");
+    donkeyHero.classList.add("friendJump");
+
+    donkeyHero.addEventListener("animationend", friendsLeave);
+
+    function friendsLeave (){
+        console.log("Leave!!!");
+        donkeyHero.classList.remove("friendJump");
+        shrekHero.classList.remove("friendJump");
+        donkeyHero.classList.add("friendsLeave");
+        shrekHero.classList.add("friendsLeave");
+    }
+}
+
+//getFriends.addEventListener("animationend")
+
+
+
+
+
+
+
+
+
+

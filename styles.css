@@ -134,7 +134,7 @@
         transform: translate(-100px);
     }
     100% {
-        transform: translate(200px);
+        transform: translate(250px);
     }
 }
 
@@ -155,7 +155,6 @@
 /*FRIENDSa Shrek and Donkey jump*/
 
 
-/*
 
 .friendJump {
     animation: friendjump .3s ease-out;
@@ -173,29 +172,28 @@
         bottom: -30px;
     }
 }
-*/
 
 
 /*FRIENDS b  Shrek and Donkey leave to the right*/
 
 
-/*
+
 .friendsLeave {
-    animation: friendsLeave 2s forwards;
+    animation: friendsLeave 3.5s forwards;
 }
 
 @keyframes friendsLeave {
     100% {
-        transform: translate(800px);
+        transform: translate(600px);
     }
 }
-*/
 
 
-/*FOES: Shrek kicks Donkey , Donkey rolles away*/
+
+/*Enemies: Shrek kicks Donkey , Donkey rolles away*/
 
 
-/*
+
 .shrekKick {
     animation: kick 0.3s;
 }
@@ -215,4 +213,4 @@
         transform: translate(-200px) rotate(600deg);
     }
 }
-*/
+
